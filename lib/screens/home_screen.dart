@@ -5,7 +5,7 @@ import 'package:vit_gpa_calc/screens/drawers/main_drawer.dart';
 import 'package:vit_gpa_calc/utils.dart';
 import 'package:vit_gpa_calc/screens/add_course.dart';
 import 'package:vit_gpa_calc/widgets/courselist_item.dart';
-import 'package:vit_gpa_calc/widgets/gpa_widget.dart';
+import 'package:vit_gpa_calc/widgets/reset_app_state.dart';
 import 'package:vit_gpa_calc/widgets/theme_changer.dart';
 
 final courseListForGpaProvider = StateProvider<List<Course>>((ref) => []);
@@ -39,8 +39,13 @@ class HomeScreen extends ConsumerWidget {
       drawer: const MainDrawer(),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(
-            'GPA Calculator${credits != 0 ? " - ${credits.toString()}" : ''}'),
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            'GPA Calculator${credits != 0 ? " - ${credits.toString()}" : ''}',
+            softWrap: true,
+          ),
+        ),
         centerTitle: false,
         leading: Builder(
           builder: (context) {
@@ -51,6 +56,7 @@ class HomeScreen extends ConsumerWidget {
           },
         ),
         actions: const [
+          ResetAppState(isSemester: false),
           ThemeChangerButton(),
         ],
       ),
@@ -90,7 +96,14 @@ class HomeScreen extends ConsumerWidget {
               width: MediaQuery.of(context).size.width * 0.5,
               padding: const EdgeInsets.all(15),
               child: Card(
-                child: GpaWidget(gpa: gpa),
+                child: Center(
+                  child: Text(
+                    gpa.toString(),
+                    style:
+                        const TextStyle(fontFamily: 'MrsEaves', fontSize: 28),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
             ),
           ),

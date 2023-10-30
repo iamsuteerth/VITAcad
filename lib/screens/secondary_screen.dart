@@ -6,7 +6,7 @@ import 'package:vit_gpa_calc/screens/drawers/main_drawer.dart';
 import 'package:vit_gpa_calc/utils.dart';
 import 'package:vit_gpa_calc/widgets/cgpa_page_add_button.dart';
 import 'package:vit_gpa_calc/widgets/courselist_item.dart';
-import 'package:vit_gpa_calc/widgets/gpa_widget.dart';
+import 'package:vit_gpa_calc/widgets/reset_app_state.dart';
 import 'package:vit_gpa_calc/widgets/semesterlist_item.dart';
 import 'package:vit_gpa_calc/widgets/theme_changer.dart';
 
@@ -55,8 +55,12 @@ class SecondaryScreen extends ConsumerWidget {
       resizeToAvoidBottomInset: false,
       drawer: const MainDrawer(),
       appBar: AppBar(
-        title: Text(
-            'CGPA Calculator${credits != 0 ? " - ${credits.toString()}" : ''}'),
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            'CGPA Calculator${credits != 0 ? " - ${credits.toString()}" : ''}',
+          ),
+        ),
         centerTitle: false,
         leading: Builder(
           builder: (context) {
@@ -67,6 +71,7 @@ class SecondaryScreen extends ConsumerWidget {
           },
         ),
         actions: const [
+          ResetAppState(isSemester: true),
           ThemeChangerButton(),
         ],
       ),
@@ -127,9 +132,13 @@ class SecondaryScreen extends ConsumerWidget {
               height: MediaQuery.of(context).size.height * 0.1,
               padding: const EdgeInsets.all(15),
               child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: GpaWidget(gpa: gpa),
+                child: Center(
+                  child: Text(
+                    gpa.toString(),
+                    style:
+                        const TextStyle(fontFamily: 'MrsEaves', fontSize: 28),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ),
