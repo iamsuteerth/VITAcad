@@ -90,7 +90,9 @@ class _AddCourseScreenState extends ConsumerState<AddCourseScreen> {
                 child: TextFormField(
                   maxLength: 50,
                   decoration: const InputDecoration(
-                    label: Text('Course Name'),
+                    label: Text(
+                      'Course Name',
+                    ),
                   ),
                   validator: (value) {
                     // Triggered to run a validation logic and return an error message if validation fails

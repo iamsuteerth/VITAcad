@@ -6,9 +6,11 @@ final theme = Provider((ref) => ThemeClass.lightTheme);
 final darkTheme = Provider((ref) => ThemeClass.darkTheme);
 final themeMode = StateProvider((ref) => ThemeMode.light);
 
+final appThemeProvider = StateProvider<bool>((ref) => false);
+
 class ThemeClass {
   Color lightPrimaryColor = HexColor('#DF0054');
-  Color darkPrimaryColor = HexColor('#480032');
+  Color darkPrimaryColor = HexColor('#C04E01');
   Color secondaryColor = HexColor('#FF8B6A');
   Color accentColor = HexColor('#FFD2BB');
 
@@ -23,6 +25,7 @@ class ThemeClass {
     primaryColor: ThemeData.dark().scaffoldBackgroundColor,
     colorScheme: const ColorScheme.dark().copyWith(
       primary: _themeClass.darkPrimaryColor,
+      secondary: _themeClass.secondaryColor,
     ),
   );
 }

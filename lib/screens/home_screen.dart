@@ -5,6 +5,7 @@ import 'package:vit_gpa_calc/screens/drawers/main_drawer.dart';
 import 'package:vit_gpa_calc/utils.dart';
 import 'package:vit_gpa_calc/screens/add_course.dart';
 import 'package:vit_gpa_calc/widgets/courselist_item.dart';
+import 'package:vit_gpa_calc/widgets/gpa_widget.dart';
 import 'package:vit_gpa_calc/widgets/reset_app_state.dart';
 import 'package:vit_gpa_calc/widgets/theme_changer.dart';
 
@@ -77,7 +78,7 @@ class HomeScreen extends ConsumerWidget {
       body: Column(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.8,
+            height: MediaQuery.of(context).size.height * 0.78,
             child: ListView.builder(
               itemCount: courseList.length,
               itemBuilder: (context, index) {
@@ -91,22 +92,8 @@ class HomeScreen extends ConsumerWidget {
               },
             ),
           ),
-          Expanded(
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.5,
-              padding: const EdgeInsets.all(15),
-              child: Card(
-                child: Center(
-                  child: Text(
-                    gpa.toString(),
-                    style:
-                        const TextStyle(fontFamily: 'MrsEaves', fontSize: 28),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          const Spacer(),
+          GpaWidget(gpa: gpa),
         ],
       ),
     );
