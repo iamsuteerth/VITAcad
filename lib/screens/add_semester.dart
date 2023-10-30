@@ -34,11 +34,8 @@ class _AddSemesterScreenState extends ConsumerState<AddSemesterScreen> {
             gpa: gpa,
           ),
         ];
-        double creds = 0;
-        for (var c in state) {
-          creds += c.credits;
-        }
-        ref.read(cgpaCredits.notifier).update((state) => creds);
+
+        ref.read(cgpaCredits.notifier).update((state) => state + credits);
         return state;
       });
       Navigator.of(context).pop();

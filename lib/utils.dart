@@ -34,6 +34,7 @@ class UtilityFunctions {
   }
 
   static double ceilTo2DecimalPlaces(double number) {
-    return (number * 100).ceil() / 100;
+    final roundedNumber = (number * 100).ceilToDouble() / 100;
+    return double.parse(roundedNumber.toStringAsFixed(2));
   }
 }

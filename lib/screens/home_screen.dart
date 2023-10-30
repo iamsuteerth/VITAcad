@@ -16,15 +16,13 @@ class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
   static const String routeName = 'GPA-CALC';
 
-  void removeItem(WidgetRef ref, int index) {
+  void removeItem(WidgetRef ref, int index, Course course) {
     ref.read(courseListForGpaProvider.notifier).update((state) {
       state.removeAt(index);
       state = [...state];
-      double creds = 0;
-      for (var c in state) {
-        creds += c.credits;
-      }
-      ref.read(creditProvider.notifier).update((state) => creds);
+      ref
+          .read(creditProvider.notifier)
+          .update((state) => state - course.credits);
       return state;
     });
   }
@@ -85,7 +83,7 @@ class HomeScreen extends ConsumerWidget {
                 return Dismissible(
                   key: ValueKey(courseList[index].id),
                   onDismissed: (direction) {
-                    removeItem(ref, index);
+                    removeItem(ref, index, courseList[index]);
                   },
                   child: CourseListItem(course: courseList[index]),
                 );

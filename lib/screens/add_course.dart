@@ -40,11 +40,9 @@ class _AddCourseScreenState extends ConsumerState<AddCourseScreen> {
                 id: const Uuid().v1(),
               )
             ];
-            double creds = 0;
-            for (var c in state) {
-              creds += c.credits;
-            }
-            ref.read(cgpaCredits.notifier).update((state) => creds);
+            ref
+                .read(cgpaCredits.notifier)
+                .update((state) => state + selectedCredits);
             return state;
           },
         );
@@ -59,11 +57,9 @@ class _AddCourseScreenState extends ConsumerState<AddCourseScreen> {
               id: const Uuid().v1(),
             )
           ];
-          double creds = 0;
-          for (var c in state) {
-            creds += c.credits;
-          }
-          ref.read(creditProvider.notifier).update((state) => creds);
+          ref
+              .read(creditProvider.notifier)
+              .update((state) => state + selectedCredits);
           return state;
         });
       }

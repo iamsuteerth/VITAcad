@@ -23,22 +23,14 @@ class SecondaryScreen extends ConsumerWidget {
     if (obj is Semester) {
       ref.read(listGpaProviderSemesters.notifier).update((state) {
         state.removeAt(index);
-        double creds = 0;
-        for (var c in state) {
-          creds += c.credits;
-        }
-        ref.read(cgpaCredits.notifier).update((state) => creds);
+        ref.read(cgpaCredits.notifier).update((state) => state - obj.credits);
         return state;
       });
     }
     if (obj is Course) {
       ref.read(listGpaProviderCourses.notifier).update((state) {
         state.removeAt(index);
-        double creds = 0;
-        for (var c in state) {
-          creds += c.credits;
-        }
-        ref.read(cgpaCredits.notifier).update((state) => creds);
+        ref.read(cgpaCredits.notifier).update((state) => state - obj.credits);
         return state;
       });
     }
@@ -84,7 +76,9 @@ class SecondaryScreen extends ConsumerWidget {
               ? Card(
                   elevation: 10,
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.38,
+                    height: semesterList.isEmpty
+                        ? MediaQuery.of(context).size.height * 0.38 * 2
+                        : MediaQuery.of(context).size.height * 0.38,
                     child: ListView.builder(
                       itemCount: courseList.length,
                       itemBuilder: (context, index) {
@@ -109,7 +103,9 @@ class SecondaryScreen extends ConsumerWidget {
               ? Card(
                   elevation: 10,
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.38,
+                    height: courseList.isEmpty
+                        ? MediaQuery.of(context).size.height * 0.38 * 2
+                        : MediaQuery.of(context).size.height * 0.38,
                     child: ListView.builder(
                       itemCount: semesterList.length,
                       itemBuilder: (context, index) {
