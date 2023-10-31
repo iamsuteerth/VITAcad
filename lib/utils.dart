@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:vit_gpa_calc/models/course.dart';
 import 'package:vit_gpa_calc/models/semester.dart';
 
@@ -30,11 +31,13 @@ class UtilityFunctions {
       numberOfCredits += i.credits;
       gpaScore += i.credits * i.gpa;
     }
-    return gpaScore / numberOfCredits;
+    return double.parse((gpaScore / numberOfCredits).toStringAsFixed(2));
   }
 
   static double ceilTo2DecimalPlaces(double number) {
-    final roundedNumber = (number * 100).ceilToDouble() / 100;
-    return double.parse(roundedNumber.toStringAsFixed(2));
+    final scaledNumber =
+        (Decimal.parse(number.toString()) * Decimal.fromInt(100)).ceil() /
+            Decimal.fromInt(100);
+    return double.parse(scaledNumber.toDouble().toString());
   }
 }

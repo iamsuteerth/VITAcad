@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.2
+  decimal: ^2.3.3
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.4.5
@@ -67,6 +68,5 @@ flutter:
     - family: MrsEaves
       fonts:
         - asset: assets\fonts\MRSEA12.TTF
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
