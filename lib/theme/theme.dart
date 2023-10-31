@@ -10,10 +10,12 @@ final themeMode = StateProvider((ref) => ThemeMode.light);
 final appThemeProvider = StateProvider<bool>((ref) => false);
 
 class ThemeClass {
-  Color lightPrimaryColor = HexColor('#DF0054');
-  Color darkPrimaryColor = HexColor('#C04E01');
-  Color secondaryColor = HexColor('#FF8B6A');
-  Color accentColor = HexColor('#FFD2BB');
+  // Color lightPrimaryColor = HexColor('#DF0054');
+  // Color darkPrimaryColor = HexColor('#C04E01');
+  Color lightPrimaryColor = Colors.redAccent.shade700.withAlpha(255);
+  Color darkPrimaryColor = Colors.redAccent.shade700.withAlpha(220);
+  Color secondaryColor = HexColor('#D32F2F');
+  Color accentColor = HexColor('#FF5252');
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: ThemeData.light().scaffoldBackgroundColor,
@@ -21,7 +23,24 @@ class ThemeClass {
       primary: _themeClass.lightPrimaryColor,
       secondary: _themeClass.secondaryColor,
     ),
-    textTheme: GoogleFonts.poppinsTextTheme(),
+    textTheme: GoogleFonts.poppinsTextTheme().copyWith(
+      bodyLarge: const TextStyle(color: Colors.black),
+      bodyMedium: const TextStyle(color: Colors.black),
+      bodySmall: const TextStyle(color: Colors.black),
+      titleLarge: const TextStyle(color: Colors.black),
+      titleMedium: const TextStyle(color: Colors.black),
+      titleSmall: const TextStyle(color: Colors.black),
+      labelLarge: TextStyle(color: Colors.grey.shade600),
+      labelMedium: TextStyle(color: Colors.grey.shade600),
+      labelSmall: TextStyle(color: Colors.grey.shade600),
+      displayLarge: const TextStyle(color: Colors.black),
+      displayMedium: const TextStyle(color: Colors.black),
+      displaySmall: const TextStyle(color: Colors.black),
+      headlineLarge: const TextStyle(color: Colors.black),
+      headlineMedium: const TextStyle(color: Colors.black),
+      headlineSmall: const TextStyle(color: Colors.black),
+    ),
+    brightness: Brightness.light,
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -30,7 +49,24 @@ class ThemeClass {
       primary: _themeClass.darkPrimaryColor,
       secondary: _themeClass.secondaryColor,
     ),
-    textTheme: GoogleFonts.poppinsTextTheme(),
+    textTheme: GoogleFonts.poppinsTextTheme().copyWith(
+      bodyLarge: const TextStyle(color: Colors.white),
+      bodyMedium: const TextStyle(color: Colors.white),
+      bodySmall: const TextStyle(color: Colors.white),
+      titleLarge: const TextStyle(color: Colors.white),
+      titleMedium: const TextStyle(color: Colors.white),
+      titleSmall: const TextStyle(color: Colors.white),
+      labelLarge: TextStyle(color: Colors.grey.shade300),
+      labelMedium: TextStyle(color: Colors.grey.shade300),
+      labelSmall: TextStyle(color: Colors.grey.shade300),
+      displayLarge: const TextStyle(color: Colors.white),
+      displayMedium: const TextStyle(color: Colors.white),
+      displaySmall: const TextStyle(color: Colors.white),
+      headlineLarge: const TextStyle(color: Colors.white),
+      headlineMedium: const TextStyle(color: Colors.white),
+      headlineSmall: const TextStyle(color: Colors.white),
+    ),
+    brightness: Brightness.dark,
   );
 }
 
