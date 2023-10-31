@@ -7,31 +7,49 @@ class CourseListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: const Icon(Icons.book),
-        contentPadding: const EdgeInsets.all(4),
-        title: Text(
-          course.courseName,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
+      child: Card(
+        elevation: 0,
+        color: Theme.of(context).focusColor,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
         ),
-        subtitle: Row(
-          children: [
-            Text(
-              course.credits.toString(),
-              style: const TextStyle(
-                fontSize: 16,
+        child: ListTile(
+          leading: const Icon(Icons.book),
+          contentPadding: const EdgeInsets.all(4),
+          title: Text(
+            course.courseName,
+          ),
+          subtitle: Row(
+            children: [
+              Text(
+                course.credits.toString(),
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
               ),
-            ),
-            const Spacer(),
-            Text(
-              course.courseGrade.grade,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+              const Spacer(),
+              Text(
+                course.courseGrade.grade,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+        // child: Padding(
+        //   padding: const EdgeInsets.all(5.0),
+        //   child: Row(children: [
+        //     Card(),
+        //     Card(),
+        //     Card(),
+        //   ],),
+        // ),
       ),
     );
   }

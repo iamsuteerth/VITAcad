@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 final theme = Provider((ref) => ThemeClass.lightTheme);
@@ -17,8 +18,10 @@ class ThemeClass {
   static ThemeData lightTheme = ThemeData(
     primaryColor: ThemeData.light().scaffoldBackgroundColor,
     colorScheme: const ColorScheme.light().copyWith(
-        primary: _themeClass.lightPrimaryColor,
-        secondary: _themeClass.secondaryColor),
+      primary: _themeClass.lightPrimaryColor,
+      secondary: _themeClass.secondaryColor,
+    ),
+    textTheme: GoogleFonts.poppinsTextTheme(),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -27,6 +30,7 @@ class ThemeClass {
       primary: _themeClass.darkPrimaryColor,
       secondary: _themeClass.secondaryColor,
     ),
+    textTheme: GoogleFonts.poppinsTextTheme(),
   );
 }
 
