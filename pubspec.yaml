@@ -34,6 +34,7 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.4.5
   flutter_speed_dial: ^7.0.0
+  google_fonts: ^6.1.0
   hexcolor: ^3.0.1
   uuid: ^4.1.0
 
@@ -64,9 +65,5 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: MrsEaves
-      fonts:
-        - asset: assets\fonts\MRSEA12.TTF
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
